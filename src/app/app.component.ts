@@ -12,6 +12,7 @@ export class AppComponent {
     }, 2000);
   });
   filteredStatus = '';
+  reverseMe = '';
 
   servers = [
     {

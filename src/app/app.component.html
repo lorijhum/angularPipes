@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <input type="text" [(ngModel)]="reverseMe">
+        <br><br>
+        
+        <br><br>
+        <h2>{{ reverseMe | reverse:reverseMe }}</h2>
       <input type="text" [(ngModel)]="filteredStatus">
-      <br>
+      <br><br>
       <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
       <br><br>
       <h2>App Status:  {{ appStatus | async}}</h2>
