@@ -6,6 +6,7 @@
         
         <br><br>
         <h2>{{ reverseMe | reverse:reverseMe }}</h2>
+        <h2>{{ reverseMe | reverse2 }}</h2>
       <input type="text" [(ngModel)]="filteredStatus">
       <br><br>
       <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
@@ -16,7 +17,22 @@
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter:filteredStatus:'status'"
+          *ngFor="let server of servers | filter:filteredStatus:'status' | sort2:'name'"
+          [ngClass]="getStatusClasses(server)">
+          <span
+            class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name | shorten:5}}</strong> | 
+          {{ server.instanceType | uppercase}} | 
+          {{ server.started | date:'fullDate' | uppercase}}
+        </li>
+      </ul>
+      <hr>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | sort:servers"
           [ngClass]="getStatusClasses(server)">
           <span
             class="badge">
